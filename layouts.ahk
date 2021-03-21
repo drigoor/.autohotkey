@@ -1,20 +1,33 @@
-MyCenterWindow(Width, Height)
+RightLayout()
 {
-  X := A_ScreenWidth/2-Width/2
-  Y := A_ScreenHeight/2-Height/2
-
-  WinMove, A, , X, Y, Width, Height
+  WinGetPos, X, Y, Width, Height, A
+  WinMove, A, , X + (Width / 2) -10, , Width / 2 +10,
 }
 
-MyCenterLeftLayout()
+LeftLayout()
 {
-  WinGetPos,,, Width, Height, A
-  WinMove, A,, (A_ScreenWidth/2)-(Width/2), (A_ScreenHeight/2)-(Height/2)
+  WinGetPos, , , Width, , A
+  WinMove, A, , , , Width / 2,
 }
 
-MyDefaultCenterLayout()
+HeightLayout()
 {
-    MyCenterWindow(1920, 1080)
+  WinMove, A, , , 100, , A_ScreenHeight-200
+}
+
+FullHdCenterLayout()
+{
+  MyCenterWindow(1920, 1080)
+}
+
+HdCenterLayout()
+{
+  MyCenterWindow(1280, 720)
+}
+
+SmallCenterLayout()
+{
+  MyCenterWindow(835, 500)
 }
 
 MyChromeLeftLayout()
@@ -27,12 +40,18 @@ MyChromeRightLayout()
   WinMove, A, , 1273, 0, 1294, 1447
 }
 
-MyFirefoxLeftLayout()
+;--------------------------------------------------------------------
+
+MyCenterWindow(Width, Height)
 {
-  WinMove, A, , -5, 0, 1290, 1445
+  X := A_ScreenWidth/2-Width/2
+  Y := A_ScreenHeight/2-Height/2
+
+  WinMove, A, , X, Y, Width, Height
 }
 
-MyFirefoxRightLayout()
+MyCenterLeftLayout()
 {
-  WinMove, A, , 1275, 0, 1290, 1445
+  WinGetPos,,, Width, Height, A
+  WinMove, A,, (A_ScreenWidth/2)-(Width/2), (A_ScreenHeight/2)-(Height/2)
 }

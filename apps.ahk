@@ -1,62 +1,105 @@
+notepad() {
+  MyAppWithLatestLayout(A_ThisFunc)
+}
 
-scoop(dir, program) {
-    return "C:\home\scoop\apps\"dir . "\current\" . program
+mspaint() {
+  MyAppWithLatestLayout(A_ThisFunc)
+}
+
+cmd(Args := "") {
+  MyAppWithCenteredLayout(A_ThisFunc, Args)
+}
+
+powershell(Args := "") {
+  MyAppWithCenteredLayout(A_ThisFunc, Args)
 }
 
 ;--------------------------------------------------------------------
 
-cmd() {
-    return ["ahk_class ConsoleWindowClass", "cmd /K cd /D C:\home"]
+MyAppWithCenteredLayout(App, Args) {
+  WinTitle = ahk_exe %App%.exe
+  Target = %App% %Args%
+  Layout = FullHdCenterLayout
+  MyApp(WinTitle, Target, Layout)
 }
 
-powershell() {
-    WinTitle = ahk_class ConsoleWindowClass
-    Target = powershell.exe -noexit -command cd C:\home
-    LayoutFn = MyDefaultCenterLayout
-    MyApp(WinTitle, Target, LayoutFn)
-    ; return ["ahk_class ConsoleWindowClass", "powershell.exe -noexit -command cd C:\home"]
+MyAppWithLatestLayout(App) {
+  WinTitle = ahk_exe %App%.exe
+  MyApp(WinTitle, App)
 }
 
-; git() {
-;     ; WinTitle = ahk_class mintty
-;     ; App = git-bash.exe --cd=C:\home
+;-----------------------------------------
 
-;     MsgBox here
-;     ; return [WinTitle, scoop(A_ThisFunc, App)]
-; coisa = ahk_class mintty
-;     return [coisa, scoop(A_ThisFunc, "git-bash.exe --cd=C:\home")]
-; }
+scoop(dir, program) {
+  return "C:\home\scoop\apps\" . dir . "\current\" . program
+}
 
 git() {
-    WinTitle = ahk_class mintty
-    Target = git-bash.exe --cd=C:\home
-    LayoutFn = MyDefaultCenterLayout
-    MyApp(WinTitle, scoop(A_ThisFunc, Target), LayoutFn)
+  WinTitle = ahk_class mintty
+  Target = git-bash.exe --cd=C:\home
+  Layout = FullHdCenterLayout
+  MyApp(WinTitle, scoop(A_ThisFunc, Target), Layout)
 }
 
 emacs() {
-    WinTitle = ahk_class Emacs
-    App = bin\runemacs.exe
-
-    return [WinTitle, scoop(A_ThisFunc, App)]
+  WinTitle = ahk_exe %A_ThisFunc%.exe
+  Target = bin\runemacs.exe
+  Layout = FullHdCenterLayout
+  MyApp(WinTitle, scoop(A_ThisFunc, Target), Layout)
 }
 
-opera() {
-    return ["ahk_class Chrome_WidgetWin_1 ahk_exe opera.exe", "C:\home\scoop\apps\opera\current\launcher --private --user-data-dir=C:\home\scoop\apps\opera\current\profile\data"]
+opera(Args := "") {
+  Dir = %A_ThisFunc%
+  Exe = launcher.exe
+  WinTitle = ahk_exe %A_ThisFunc%.exe
+  Target := scoop(Dir, Exe) " --user-data-dir=" scoop(Dir, "profile") " " Args
+  MyApp(WinTitle, Target)
 }
 
-firefox() {
-    return ["ahk_class MozillaWindowClass", "C:\home\scoop\apps\firefox-portable\current\firefox.exe -profile C:\home\scoop\apps\firefox-portable\current\profile"]
+youtube(Thing) {
+  Run, % scoop("opera", "launcher.exe") " --user-data-dir=" scoop("opera", "profile") " --private"
+  WinWait, ahk_exe opera.exe
+  Sleep, 250
+  Send https://www.youtube.com/results?search_query=%Thing%{Enter}
 }
 
-chrome() {
-    return ["ahk_class Chrome_WidgetWin_1 ahk_exe chrome.exe", "C:\home\scoop\apps\googlechrome-portable\current\chrome.exe --user-data-dir=""C:\home\scoop\apps\googlechrome-portable\current\User Data"""]
+firefox(Args := "") {
+  Dir = %A_ThisFunc%-portable
+  Exe = %A_ThisFunc%.exe
+  WinTitle = ahk_exe %Exe%
+  Target := scoop(Dir, Exe) " -profile " scoop(Dir, "profile") " " Args
+  Layout = %A_ThisFunc%Layout
+  MyApp(WinTitle, Target, Layout)
 }
 
-intellij() {
-    return ["ahk_exe idea64.exe", "C:\home\scoop\apps\idea\current\bin\idea64.exe"]
+firefoxLayout() {
+  WinMove, A, , 1275, 0, 1290, 1445 ; right  WinMove, A, , -5, 0, 1290, 1445 ; left
 }
 
-vscode() {
-    return ["ahk_exe Code.exe", "C:\home\scoop\apps\vscode\current\Code.exe"]
+firefoxPrivateWindow(Args := "") {
+  Run, % scoop("firefox-portable", "firefox.exe") " -profile " scoop("firefox-portable", "profile") " -private-window" " " Args
+}
+
+chrome(Args := "") {
+  Dir = google%A_ThisFunc%-portable
+  Exe = %A_ThisFunc%.exe
+  WinTitle = ahk_exe %Exe%
+  Target := scoop(Dir, Exe) " --user-data-dir=""" scoop(Dir, "User Data") """ " Args
+  MyApp(WinTitle, Target)
+}
+
+idea() {
+  Dir = %A_ThisFunc%
+  Exe = %A_ThisFunc%64.exe
+  WinTitle = ahk_exe %Exe%
+  Target := scoop(Dir, "bin\"Exe)
+  MyApp(WinTitle, Target)
+}
+
+code() {
+  Dir = vs%A_ThisFunc%
+  Exe = %A_ThisFunc%.exe
+  WinTitle = ahk_exe %Exe%
+  Target := scoop(Dir, Exe)
+  MyApp(WinTitle, Target)
 }
