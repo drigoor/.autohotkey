@@ -22,6 +22,10 @@
 #IfWinActive ahk_exe powershell.exe
 ^d::Send, exit{Enter}
 
+; if in gitbash
+#IfWinActive ahk_exe mintty.exe
+#e::Send, explorer .{Enter}
+
 ; if in other window
 #IfWinActive
 #h::ShowTime()
@@ -29,8 +33,8 @@
 
 ^!r::Reload
 
-!1::Send, #^{Left}
-!2::Send, #^{Right}
+#f1::Send, #^{Left}
+#f2::Send, #^{Right}
 
 #c::Run %A_Startup% ; check for more: https://www.autohotkey.com/docs/Variables.htm
 
@@ -38,8 +42,15 @@
 
 #1::Run C:\home
 #2::Run C:\Users\User\Downloads
+#3::emacs()
+#+3::Run runemacs ; -q -l C:\home\projects_old\_external\nano-emacs\nano.el
 #5::Run C:\home\aulas\2021\AED
-#6::Run C:\home\quicklisp\local-projects\tfx
+#6::Run C:\home\aulas\2021\TFC
+#7::Run C:\home\quicklisp\local-projects\tfx
+#8::opera("--private")
+#9::firefox("https://www.ulusofona.pt")
+#+9::firefoxPrivateWindow("https://www.gmail.com") ; this only works if a previous window exists
+#0::chrome()
 
 #f5::FullHdCenterLayout()
 #f6::HdCenterLayout()
@@ -52,21 +63,17 @@
 #e::MyExplorer()
 #+e::Run, explorer.exe
 
+#m::youtube("synthwave")
 #n::notepad()
 #+n::Run notepad
 #p::mspaint()
 
+#j::idea()
+#v::code()
+
 #+Enter::cmd("/K cd /D C:\home")
 #!Enter::powershell("-noexit -command cd C:\home")
 #Enter::git()
-
-#3::emacs()
-#+3::Run runemacs ; -q -l C:\home\projects_old\_external\nano-emacs\nano.el
-
-#8::opera("--private")
-#9::firefox("https://www.ulusofona.pt")
-#+9::firefoxPrivateWindow("https://www.gmail.com") ; this only works if a previous window exists
-#0::chrome()
 
 ;--------------------------------------------------------------------
 
