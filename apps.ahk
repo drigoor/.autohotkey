@@ -103,3 +103,17 @@ code() {
   Target := scoop(Dir, Exe)
   MyApp(WinTitle, Target)
 }
+
+docker() {
+  WinTitle = ahk_exe Docker Desktop.exe
+  Target = C:\Program Files\Docker\Docker\Docker Desktop.exe
+  MyApp(WinTitle, Target)
+}
+
+compass() {
+  Dir = mongodb-compass-community
+  Exe = MongoDBCompassCommunity.exe
+  WinTitle = ahk_exe %Exe%
+  Target := scoop(Dir, Exe)
+  MyApp(WinTitle, Target)
+}

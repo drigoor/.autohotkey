@@ -17,6 +17,7 @@
 ; if in cmd
 #IfWinActive ahk_exe cmd.exe
 ^d::Send, exit{Enter}
+^c::Send, {Ctrl Down}c{Ctrl Up}y{Enter}
 
 ; if in powershell
 #IfWinActive ahk_exe powershell.exe
@@ -63,17 +64,23 @@
 #e::MyExplorer()
 #+e::Run, explorer.exe
 
-#m::youtube("synthwave")
 #n::notepad()
 #+n::Run notepad
 #p::mspaint()
 
-#j::idea()
-#v::code()
-
 #+Enter::cmd("/K cd /D C:\home")
 #!Enter::powershell("-noexit -command cd C:\home")
 #Enter::git()
+
+#j::idea()
+#v::code()
+#d::docker()
+
+#ç::compass()
+#º::Run C:\home\quicklisp\local-projects\tfx\mongodb.bat
+#~::Run C:\home\quicklisp\local-projects\plages\mongodb.bat
+
+#m::youtube("synthwave")
 
 ;--------------------------------------------------------------------
 
