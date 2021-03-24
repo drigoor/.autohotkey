@@ -18,6 +18,7 @@
 #IfWinActive ahk_exe cmd.exe
 ^d::Send, exit{Enter}
 ^c::Send, {Ctrl Down}c{Ctrl Up}y{Enter}
+^l::Send, cls{Enter}
 
 ; if in powershell
 #IfWinActive ahk_exe powershell.exe
@@ -67,6 +68,7 @@
 #n::notepad()
 #+n::Run notepad
 #p::mspaint()
+#!p::sumatrapdf()
 
 #+Enter::cmd("/K cd /D C:\home")
 #!Enter::powershell("-noexit -command cd C:\home")

@@ -48,6 +48,12 @@ emacs() {
   MyApp(WinTitle, scoop(A_ThisFunc, Target), Layout)
 }
 
+sumatrapdf() {
+  WinTitle = ahk_exe %A_ThisFunc%.exe
+  Target = %A_ThisFunc%.exe
+  MyApp(WinTitle, scoop(A_ThisFunc, Target))
+}
+
 opera(Args := "") {
   Dir = %A_ThisFunc%
   Exe = launcher.exe
