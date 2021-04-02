@@ -48,8 +48,8 @@
 #+3::Run runemacs ; -q -l C:\home\projects_old\_external\nano-emacs\nano.el
 #5::Run C:\home\aulas\2021\AED
 #6::Run C:\home\aulas\2021\TFC
-#7::Run C:\home\quicklisp\local-projects\tfx
 #8::opera("--private")
+#+8::opera()
 #9::firefox("https://www.ulusofona.pt")
 #+9::firefoxPrivateWindow("https://www.gmail.com") ; this only works if a previous window exists
 #0::chrome()
@@ -58,9 +58,13 @@
 #f6::HdCenterLayout()
 #f7::SmallCenterLayout()
 
-#up::HeightLayout()
-#left::LeftLayout()
-#right::RightLayout()
+#left::MoveLayoutLeft()
+#right::MoveLayoutRight()
+#+left::ShrinkWidthLayout()
+#+right::EnlargWidthLayout()
+#+up::HeightLayout()
+
+#!^3::TwoThirdsLayoutRight()
 
 #e::MyExplorer()
 #+e::Run, explorer.exe
@@ -74,13 +78,15 @@
 #!Enter::powershell("-noexit -command cd C:\home")
 #Enter::git()
 
+#+g::gitextensions() ; lets keep Win+G for the Windows Game Bar (to record small videos)
+#b::msedge()
+
 #j::idea()
 #v::code()
 #d::docker()
 
 #ç::compass()
-#º::Run C:\home\quicklisp\local-projects\tfx\mongodb.bat
-#~::Run C:\home\quicklisp\local-projects\plages\mongodb.bat
+#~::Run C:\home\aulas\2021\TFC\code\plages\mongodb.bat
 
 #m::youtube("synthwave")
 

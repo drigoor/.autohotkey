@@ -1,18 +1,66 @@
-RightLayout()
+MoveLayoutRight()
 {
-  WinGetPos, X, Y, Width, Height, A
-  WinMove, A, , X + (Width / 2) -10, , Width / 2 +10,
+  WinGetPos, X, , Width, , A
+  Delta := A_ScreenWidth / 8
+  NewX := X + Delta
+  if (NewX > (A_ScreenWidth - Width)) {
+    NewX := A_ScreenWidth - Width
+  }
+  WinMove, A, , %NewX%, , ,
 }
 
-LeftLayout()
+MoveLayoutLeft()
+{
+  WinGetPos, X, , Width, , A
+  Delta := A_ScreenWidth / 8
+  NewX := X - Delta
+  if (NewX < 0) {
+    NewX := 0
+  }
+  WinMove, A, , %NewX%, , ,
+}
+
+ShrinkWidthLayout()
 {
   WinGetPos, , , Width, , A
-  WinMove, A, , , , Width / 2,
+  Delta := A_ScreenWidth / 8
+  NewWidth := Width - Delta
+  if (NewWidth < Delta) {
+    NewWidth := Delta
+  }
+  WinMove, A, , , , %NewWidth%,
+}
+
+EnlargWidthLayout()
+{
+  WinGetPos, X, , Width, , A
+  Delta := A_ScreenWidth / 8
+  NewWidth := Width + Delta
+  if ((X + NewWidth) > A_ScreenWidth) {
+    NewWidth := A_ScreenWidth - X
+  }
+  WinMove, A, , , , %NewWidth%,
+}
+
+
+TwoThirdsLayoutRight()
+{
+  ; WinGetPos, X, Y, Width, Height, A
+  ; WinMove, A, , X + (Width / 2) -10, , Width / 2 +10,
+
+  ActWin := WinActive("A")
+  WinMove, A, , A_ScreenWidth / 3, , A_ScreenWidth - (A_ScreenWidth / 3),
+  ; Send, {Alt Down}{Tab}{Alt Up}
+  Send, !{Esc}
+  Sleep, 150
+  WinMove, A, , 0, , A_ScreenWidth / 3,
+  ; from: https://jacks-autohotkey-blog.com/2020/04/20/autohotkey-tricks-for-tracking-activating-target-process-windows/#more-41349
+  WinActivate, ahk_id %ActWin%
 }
 
 HeightLayout()
 {
-  WinMove, A, , , 100, , A_ScreenHeight-200
+  WinMove, A, , , 50, , A_ScreenHeight-100
 }
 
 FullHdCenterLayout()

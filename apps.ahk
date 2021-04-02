@@ -14,6 +14,10 @@ powershell(Args := "") {
   MyAppWithCenteredLayout(A_ThisFunc, Args)
 }
 
+msedge() {
+  MyAppWithLatestLayout(A_ThisFunc)
+}
+
 ;--------------------------------------------------------------------
 
 MyAppWithCenteredLayout(App, Args) {
@@ -41,6 +45,12 @@ git() {
   MyApp(WinTitle, scoop(A_ThisFunc, Target), Layout)
 }
 
+gitextensions() {
+  WinTitle = ahk_exe %A_ThisFunc%.exe
+  Target = %A_ThisFunc%.exe
+  MyApp(WinTitle, scoop(A_ThisFunc, Target))
+}
+
 emacs() {
   WinTitle = ahk_exe %A_ThisFunc%.exe
   Target = bin\runemacs.exe
@@ -63,9 +73,10 @@ opera(Args := "") {
 }
 
 youtube(Thing) {
-  Run, % scoop("opera", "launcher.exe") " --user-data-dir=" scoop("opera", "profile") " --private"
-  WinWait, ahk_exe opera.exe
-  Sleep, 250
+  opera("--private")
+  Sleep, 500
+  Send {Ctrl Down}l{Ctrl Up}
+  Sleep, 150
   Send https://www.youtube.com/results?search_query=%Thing%{Enter}
 }
 
