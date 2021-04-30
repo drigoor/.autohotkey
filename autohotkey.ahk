@@ -3,12 +3,14 @@
 ; !  Alt Key      !
 ; +  Shift Key    +
 
+; http://www.daviddeley.com/autohotkey/xprxmp/autohotkey_expression_examples.htm
+
 #SingleInstance force
 ; #NoTrayIcon
 
-#Include apps.ahk
-#Include utils.ahk
-#Include layouts.ahk
+#Include %A_ScriptDir%\apps.ahk
+#Include %A_ScriptDir%\utils.ahk
+#Include %A_ScriptDir%\layouts.ahk
 
 ; if in desktop
 #IfWinActive Program Manager

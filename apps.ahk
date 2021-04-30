@@ -70,6 +70,9 @@ opera(Args := "") {
   WinTitle = ahk_exe %A_ThisFunc%.exe
   Target := scoop(Dir, Exe) " --user-data-dir=" scoop(Dir, "profile") " " Args
   MyApp(WinTitle, Target)
+
+  ; mklink /J c:\home\scoop\apps\opera\current\profile c:\home\scoop\persist\opera\profile
+
 }
 
 youtube(Thing) {
