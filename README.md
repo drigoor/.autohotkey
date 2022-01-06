@@ -11,7 +11,7 @@ Notes:
 - S - Shift key
 - _example:_ C-c means pressing 'Control' key with 'c' key
 - If a given program isn't running, open it as expected.
-If it is running and not the active window, activated it, or if it is minimized, activate it.
+If it is running and not the active window, or is minimized, activated it.
 If it is running and is the active window, minimize it (and the previous window become active).
 
 ## Shortcuts...
