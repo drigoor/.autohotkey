@@ -4,14 +4,15 @@ Currently some programs were installed via [scoop](https://scoop.sh).
 
 This allows to quickly open the required program with the keyboard, e.g. open applications with custom layouts, open specific folders, apply transparency to a window, or even hide the task bar, and hide a titlebar of a window - for that _minimalist look_
 
-If a given program isn't running, open it as expected. If it is running and not the active window, activated it. If it running and is the active window, minimize it (and the previous window become active).
-
 Notes:
 - C means Control key
 - W - Windows key
 - M - Alt key
 - S - Shift key
 - _example:_ C-c means pressing 'Control' key with 'c' key
+- If a given program isn't running, open it as expected.
+If it is running and not the active window, activated it, or if it is minimized, activate it.
+If it is running and is the active window, minimize it (and the previous window become active).
 
 ## Shortcuts...
 
