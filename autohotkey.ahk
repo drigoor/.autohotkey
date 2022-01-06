@@ -12,49 +12,35 @@
 #Include %A_ScriptDir%\utils.ahk
 #Include %A_ScriptDir%\layouts.ahk
 
-; if in desktop
-#IfWinActive Program Manager
-#i:: Run, % scoop("autohotkey", "WindowSpy.ahk")
-
 ; if in cmd
 #IfWinActive ahk_exe cmd.exe
-^d::Send, exit{Enter}
-^c::Send, {Ctrl Down}c{Ctrl Up}y{Enter}
-^l::Send, cls{Enter}
+^c::Send {Ctrl Down}c{Ctrl Up}y{Enter}
+^d::Send exit{Enter}
+^l::Send cls{Enter}
+#e::Send explorer .{Enter}
 
 ; if in powershell
 #IfWinActive ahk_exe powershell.exe
-^d::Send, exit{Enter}
+^d::Send exit{Enter}
+#e::Send explorer .{Enter}
 
 ; if in gitbash
 #IfWinActive ahk_exe mintty.exe
-#e::Send, explorer .{Enter}
+#e::Send explorer .{Enter}
+
+; if in desktop
+#IfWinActive Program Manager
+#i::Run % scoop0("autohotkey", "WindowSpy.ahk")
 
 ; if in other window
 #IfWinActive
-#h::ShowTime()
-#i::ShowWindowInfo()
-
+^|::Run %windir%\system32\taskmgr.exe /7 ; hack because of ducky 65% keyboard
 ^!r::Reload
-
-#f1::Send, #^{Left}
-#f2::Send, #^{Right}
-
+#f1::Send #^{Left}
+#f2::Send #^{Right}
+#i::ShowWindowInfo()
+#h::ShowTime()
 #c::Run %A_Startup% ; check for more: https://www.autohotkey.com/docs/Variables.htm
-
-^|::Run, %windir%\system32\taskmgr.exe /7
-
-#1::Run C:\home
-#2::Run C:\Users\User\Downloads
-#3::emacs()
-#+3::Run runemacs ; -q -l C:\home\projects_old\_external\nano-emacs\nano.el
-#5::Run C:\home\aulas\2021\AED
-#6::Run C:\home\aulas\2021\TFC
-#8::opera("--private")
-#+8::opera()
-#9::firefox("https://www.ulusofona.pt")
-#+9::firefoxPrivateWindow("https://www.gmail.com") ; this only works if a previous window exists
-#0::chrome()
 
 #f5::FullHdCenterLayout()
 #f6::HdCenterLayout()
@@ -65,32 +51,38 @@
 #+left::ShrinkWidthLayout()
 #+right::EnlargWidthLayout()
 #+up::HeightLayout()
-
 #!^3::TwoThirdsLayoutRight()
 
+#1::Run C:\home
+#2::Run C:\Users\User\Downloads
+#3::scoop("bin\runemacs", "FullHdCenterLayout", "ahk_exe emacs.exe", "emacs")
+#+3::Run runemacs -q ;  -l C:\home\projects\emacs\nano-emacs\nano.el
+#4::Run C:\home\aulas\2122\
+#5::Run C:\home\aulas\2122\FP\
+#6::Run C:\home\aulas\2122\TFC\
+#8::opera()
+#9::scoop("firefox https://www.ulusofona.pt", "FirefoxLayout")
+#+9::firefoxPrivateWindow("https://www.gmail.com", "FirefoxLayout") ; this only works if a previous window exists
+#0::scoop("chrome", , , "googlechrome")
+
+#b::app("msedge")
+#d::app("C:\Program Files\Docker\Docker\Docker Desktop.exe", "", "ahk_exe Docker Desktop.exe")
 #e::MyExplorer()
-#+e::Run, explorer.exe
-
-#n::notepad()
+#+e::Run explorer.exe
+#+g::scoop("gitextensions") ; lets keep Win+G for the Windows Game Bar (to record small videos)
+#j::scoop("IDE\bin\idea64", "", "ahk_exe idea64.exe", "idea")
+#m::youtube("game of thrones soundtrack") ; synthwave 80
+#n::app("notepad")
 #+n::Run notepad
-#p::mspaint()
-#!p::sumatrapdf()
+#o::scoop("obsidian")
+#p::app("mspaint")
+#!p::scoop("sumatrapdf")
+#v::scoop("vscodium")
 
-#+Enter::cmd("/K cd /D C:\home")
-#!Enter::powershell("-noexit -command cd C:\home")
-#Enter::git()
-
-#+g::gitextensions() ; lets keep Win+G for the Windows Game Bar (to record small videos)
-#b::msedge()
-
-#j::idea()
-#v::code()
-#d::docker()
-
-#ç::compass()
-#~::Run C:\home\aulas\2021\TFC\code\plages\mongodb.bat
-
-#m::youtube("synthwave")
+#+Enter::app("cmd /K cd /D C:\home", "FullHdCenterLayout")
+#!Enter::app("powershell -noexit -command cd C:\home", "FullHdCenterLayout")
+#Enter::scoop("git-bash --cd=C:\home", "FullHdCenterLayout", "ahk_class mintty", "git")
+#+!Enter::scoop("mingw64", "FullHdCenterLayout", "ahk_class mintty", "msys2")
 
 ;--------------------------------------------------------------------
 

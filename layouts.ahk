@@ -1,5 +1,15 @@
-MoveLayoutRight()
-{
+FirefoxLayout() {
+  Sleep, 500
+  WinMove, A, , 640, 0, 1600, 1445
+}
+
+OperaLayout() {
+  WinMove, A, , 640, 50, 1600, 1340
+}
+
+;--------------------------------------------------------------------
+
+MoveLayoutRight() {
   WinGetPos, X, , Width, , A
   Delta := A_ScreenWidth / 8
   NewX := X + Delta
@@ -9,8 +19,7 @@ MoveLayoutRight()
   WinMove, A, , %NewX%, , ,
 }
 
-MoveLayoutLeft()
-{
+MoveLayoutLeft() {
   WinGetPos, X, , Width, , A
   Delta := A_ScreenWidth / 8
   NewX := X - Delta
@@ -20,8 +29,7 @@ MoveLayoutLeft()
   WinMove, A, , %NewX%, , ,
 }
 
-ShrinkWidthLayout()
-{
+ShrinkWidthLayout() {
   WinGetPos, , , Width, , A
   Delta := A_ScreenWidth / 8
   NewWidth := Width - Delta
@@ -31,8 +39,7 @@ ShrinkWidthLayout()
   WinMove, A, , , , %NewWidth%,
 }
 
-EnlargWidthLayout()
-{
+EnlargWidthLayout() {
   WinGetPos, X, , Width, , A
   Delta := A_ScreenWidth / 8
   NewWidth := Width + Delta
@@ -43,14 +50,9 @@ EnlargWidthLayout()
 }
 
 
-TwoThirdsLayoutRight()
-{
-  ; WinGetPos, X, Y, Width, Height, A
-  ; WinMove, A, , X + (Width / 2) -10, , Width / 2 +10,
-
+TwoThirdsLayoutRight() {
   ActWin := WinActive("A")
   WinMove, A, , A_ScreenWidth / 3, , A_ScreenWidth - (A_ScreenWidth / 3),
-  ; Send, {Alt Down}{Tab}{Alt Up}
   Send, !{Esc}
   Sleep, 150
   WinMove, A, , 0, , A_ScreenWidth / 3,
@@ -58,48 +60,24 @@ TwoThirdsLayoutRight()
   WinActivate, ahk_id %ActWin%
 }
 
-HeightLayout()
-{
+HeightLayout() {
   WinMove, A, , , 50, , A_ScreenHeight-100
 }
 
-FullHdCenterLayout()
-{
-  MyCenterWindow(1920, 1080)
-}
-
-HdCenterLayout()
-{
-  MyCenterWindow(1280, 720)
-}
-
-SmallCenterLayout()
-{
-  MyCenterWindow(835, 500)
-}
-
-MyChromeLeftLayout()
-{
-  WinMove, A, , -7, 0, 1294, 1447
-}
-
-MyChromeRightLayout()
-{
-  WinMove, A, , 1273, 0, 1294, 1447
-}
-
-;--------------------------------------------------------------------
-
-MyCenterWindow(Width, Height)
-{
+MyCenterWindow(Width, Height) {
   X := A_ScreenWidth/2-Width/2
   Y := A_ScreenHeight/2-Height/2
-
   WinMove, A, , X, Y, Width, Height
 }
 
-MyCenterLeftLayout()
-{
-  WinGetPos,,, Width, Height, A
-  WinMove, A,, (A_ScreenWidth/2)-(Width/2), (A_ScreenHeight/2)-(Height/2)
+FullHdCenterLayout() {
+  MyCenterWindow(1920, 1080)
+}
+
+HdCenterLayout() {
+  MyCenterWindow(1280, 720)
+}
+
+SmallCenterLayout() {
+  MyCenterWindow(835, 500)
 }
