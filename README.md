@@ -2,7 +2,9 @@
 My custom shortcuts for Windows using [autohotkey](https://www.autohotkey.com).
 Currently some programs were installed via [scoop](https://scoop.sh).
 
-This allows to quickly open the required program with the keyboard, e.g. open applications with custom layouts, open specific folders, apply transparency to a window, or even hide the task bar, and hide a titlebar of a window - for that minimalist look.
+This allows to quickly open the required program with the keyboard, e.g. open applications with custom layouts, open specific folders, apply transparency to a window, or even hide the task bar, and hide a titlebar of a window - for that _minimalist look_
+
+If a given program isn't running, open it as expected. If it is running and not the active window, activated it. If it running and is the active window, minimize it (and the previous window become active).
 
 Notes:
 - C means Control key
