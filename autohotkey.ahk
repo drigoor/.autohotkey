@@ -75,6 +75,8 @@
 #n::app("notepad")
 #+n::Run notepad
 #o::scoop("obsidian")
+#!o::Run "obsidian://open?vault=apontamentos"
+#+o::Run "obsidian://open?vault=apontamentos_aulas"
 #p::app("mspaint")
 #!p::scoop("sumatrapdf")
 #v::scoop("vscodium")
