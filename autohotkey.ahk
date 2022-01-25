@@ -8,6 +8,10 @@
 #SingleInstance force
 ; #NoTrayIcon
 
+SetCapsLockState AlwaysOff
+SetNumLockState AlwaysOn
+SetScrollLockState AlwaysOff
+
 #Include %A_ScriptDir%\apps.ahk
 #Include %A_ScriptDir%\utils.ahk
 #Include %A_ScriptDir%\layouts.ahk
@@ -66,7 +70,7 @@
 #0::scoop("chrome", , , "googlechrome")
 
 #b::app("msedge")
-#d::app("C:\Program Files\Docker\Docker\Docker Desktop.exe", "", "ahk_exe Docker Desktop.exe")
+#+d::app("C:\Program Files\Docker\Docker\Docker Desktop.exe", "", "ahk_exe Docker Desktop.exe")
 #e::MyExplorer()
 #+e::Run explorer.exe
 #+g::scoop("gitextensions") ; lets keep Win+G for the Windows Game Bar (to record small videos)

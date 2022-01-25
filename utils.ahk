@@ -52,9 +52,8 @@ MyApp(WinTitle, Target, LayoutFunc := "") {
 }
 
 ; based on: https://github.com/TaranVH/2nd-keyboard (switchExplorer)
-MyExplorer()
-{
-  sleep 11 ; this is to avoid the stuck modifiers bug
+MyExplorer() {
+  Sleep 11 ; this is to avoid the stuck modifiers bug
   if not WinExist("ahk_class CabinetWClass") {
     Run, explorer.exe
   }
