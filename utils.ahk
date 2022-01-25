@@ -1,3 +1,10 @@
+
+FocusMode() {
+  WinGet, active_id, ID, A
+  WinMinimizeAll
+  WinRestore, ahk_id %active_id%
+}
+
 ShowTime() {
   FormatTime, TimeString, Hmm, Time
   Gui +LastFound +AlwaysOnTop -Caption +ToolWindow

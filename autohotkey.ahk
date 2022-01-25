@@ -112,3 +112,6 @@ return
 ; from: http://superuser.com/questions/38687/windows-program-to-remove-titlebar-frame-etc-from-a-window
 #f::WinSet, Style, -0xC40000, A ; using an auto-hide taskbar
 #+f::WinSet, Style, +0xC40000, A ; using an auto-hide taskbar
+
+
+#d::FocusMode()
