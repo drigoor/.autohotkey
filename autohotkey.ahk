@@ -59,8 +59,9 @@ SetScrollLockState AlwaysOff
 
 #1::Run C:\home
 #2::Run C:\Users\User\Downloads
-#3::scoop("bin\runemacs", "FullHdCenterLayout", "ahk_exe emacs.exe", "emacs")
-#+3::Run runemacs -q ;  -l C:\home\projects\emacs\nano-emacs\nano.el
+#3::scoop("bin\runemacs", , "ahk_exe emacs.exe", "emacs")
+#+3::Run runemacs
+; #+3::Run runemacs -q ;  -l C:\home\projects\emacs\nano-emacs\nano.el
 #4::Run C:\home\aulas\2122\
 #5::Run C:\home\aulas\2122\FP\
 #6::Run C:\home\aulas\2122\TFC\
