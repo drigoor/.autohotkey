@@ -116,3 +116,5 @@ return
 
 
 #d::FocusMode()
+
+#Include %A_ScriptDir%\AltWindowDrag.ahk
