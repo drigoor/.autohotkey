@@ -12,6 +12,10 @@ SetCapsLockState AlwaysOff
 SetNumLockState AlwaysOn
 SetScrollLockState AlwaysOff
 
+
+CapsLock::LWin
+
+
 #Include %A_ScriptDir%\apps.ahk
 #Include %A_ScriptDir%\utils.ahk
 #Include %A_ScriptDir%\layouts.ahk
@@ -63,7 +67,7 @@ SetScrollLockState AlwaysOff
 #+3::Run runemacs
 ; #+3::Run runemacs -q ;  -l C:\home\projects\emacs\nano-emacs\nano.el
 #4::Run C:\home\aulas\2122\
-#5::Run C:\home\aulas\2122\FP\
+#5::Run C:\home\aulas\2122\AED\
 #6::Run C:\home\aulas\2122\TFC\
 #8::opera()
 #9::scoop("firefox https://www.ulusofona.pt", "FirefoxLayout")
@@ -90,6 +94,11 @@ SetScrollLockState AlwaysOff
 #!Enter::app("powershell -noexit -command cd C:\home", "FullHdCenterLayout")
 #Enter::scoop("git-bash --cd=C:\home", "FullHdCenterLayout", "ahk_class mintty", "git")
 #+!Enter::scoop("mingw64", "FullHdCenterLayout", "ahk_class mintty", "msys2")
+
+#NumpadEnter::Run calc.exe
+
+#NumpadSub::SoundSet, -1
+#NumpadAdd::SoundSet, +1
 
 ;--------------------------------------------------------------------
 

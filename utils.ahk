@@ -40,6 +40,14 @@ MyApp(WinTitle, Target, LayoutFunc := "") {
       WinMinimize
     }
     else {
+
+      ; ; MELHORAR COMO ISTO?
+      ; WinRestore, ahk_id %active_id%
+      ;
+      ; EXPERIMENTAR COM:
+      ;    https://www.autohotkey.com/docs/commands/SetKeyDelay.htm
+      ;    https://www.autohotkey.com/docs/commands/SetWinDelay.htm
+
       ; WinActivate, %WinTitle%
       ; WinGet, hWnd, ID, %WinTitle%
       ; DllCall("SetForegroundWindow", UInt, hWnd)
