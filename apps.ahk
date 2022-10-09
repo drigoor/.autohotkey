@@ -23,6 +23,10 @@ scoop0(dir, program) {
 
 ;--------------------------------------------------------------------
 
+brave() {
+  scoop("brave --incognito", "OperaLayout", "ahk_exe brave.exe", "brave")
+}
+
 opera() {
   scoop("launcher --private --user-data-dir=" scoop0("opera", "profile"), "OperaLayout", "ahk_exe opera.exe", "opera")
 

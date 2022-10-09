@@ -66,9 +66,10 @@ CapsLock::LWin
 #3::scoop("bin\runemacs", , "ahk_exe emacs.exe", "emacs")
 #+3::Run runemacs
 ; #+3::Run runemacs -q ;  -l C:\home\projects\emacs\nano-emacs\nano.el
-#4::Run C:\home\aulas\2122\
-#5::Run C:\home\aulas\2122\AED\
-#6::Run C:\home\aulas\2122\TFC\
+#4::Run C:\home\aulas\2223\
+#5::Run C:\home\aulas\2223\FP\
+#6::Run C:\home\aulas\2223\TFC\
+#7::brave()
 #8::opera()
 #9::scoop("firefox https://www.ulusofona.pt", "FirefoxLayout")
 #+9::firefoxPrivateWindow("https://www.gmail.com", "FirefoxLayout") ; this only works if a previous window exists
@@ -99,6 +100,12 @@ CapsLock::LWin
 
 #NumpadSub::SoundSet, -1
 #NumpadAdd::SoundSet, +1
+
+^PgDn::SoundSet, -1
+^PgUp::SoundSet, +1
+
+^+PgDn::SoundSet, -10
+^+PgUp::SoundSet, +10
 
 ;--------------------------------------------------------------------
 
