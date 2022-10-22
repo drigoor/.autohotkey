@@ -46,9 +46,17 @@ If it is running and is the active window, minimize it (and the previous window 
 | C-M-r | Reloads the autohotkey configuration file
 | W-f1 | Change to desktop #1
 | W-f2 | Change to desktop #2
+| W-f12 | Show/Hide the desktop icons
 | W-i | opens a small ephemeral window with info regarding the current window
 | W-h | opens a small ephemeral window with the current hour
 | W-c | opens the windows _startup_ folder
+| W-d | focus mode: minimize all windows except the current
+| W-t | Hide the taskbar
+| W-S-t | Show the taskbar
+| W-A-t | Make the current window transparent
+| W-A-S-t | Make the current window opaque
+| W-f | Hide titlebar
+| W-S-f | Show titlebar
 
 |Shortcut|Description
 |-|-|
