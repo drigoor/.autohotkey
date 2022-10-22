@@ -53,8 +53,8 @@ If it is running and is the active window, minimize it (and the previous window 
 | W-d | focus mode: minimize all windows except the current
 | W-t | Hide the taskbar
 | W-S-t | Show the taskbar
-| W-A-t | Make the current window transparent
-| W-A-S-t | Make the current window opaque
+| W-M-t | Make the current window transparent
+| W-M-S-t | Make the current window opaque
 | W-f | Hide titlebar
 | W-S-f | Show titlebar
 
