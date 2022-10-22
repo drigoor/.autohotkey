@@ -130,7 +130,8 @@ return
 #f::WinSet, Style, -0xC40000, A ; using an auto-hide taskbar
 #+f::WinSet, Style, +0xC40000, A ; using an auto-hide taskbar
 
-
 #d::FocusMode()
+
+F12::HideShowDesktopIcons()
 
 #Include %A_ScriptDir%\AltWindowDrag.ahk

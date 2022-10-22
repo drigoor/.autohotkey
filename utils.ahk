@@ -1,4 +1,3 @@
-
 FocusMode() {
   WinGet, active_id, ID, A
   WinMinimizeAll
@@ -79,4 +78,14 @@ MyExplorer() {
   else {
     WinActivate ahk_class CabinetWClass ;you have to use WinActivatebottom if you didn't create a window group.
   }
+}
+
+HideShowDesktopIcons() { ; from https://www.reddit.com/r/AutoHotkey/comments/gcftm0/hide_desktop_icons/
+  ; alternative: https://windowsloop.com/hide-unhide-desktop-icons-keyboard-shortcut/
+  ControlGet, hwnd, Hwnd, , SysListView321, ahk_class Progman
+  ControlSend, , {F5}, ahk_id %hwnd%
+  If DllCall("IsWindowVisible", UInt,hwnd)
+    WinHide, ahk_id %hwnd%
+  Else
+    WinShow, ahk_id %hwnd%
 }
