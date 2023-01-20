@@ -58,13 +58,20 @@ CapsLock::LWin
 #!+l::LayoutEnlargeWidth
 
 #3::scoop "bin\runemacs", , "ahk_exe emacs.exe", "emacs"
-#+3::Run "runemacs" ; -q ;  -l C:\home\projects\emacs\nano-emacs\nano.el
+#+3::Run "runemacs -l c:\home\.emacs.d.alt\init.el" ; -q ;  -l C:\home\projects\emacs\nano-emacs\nano.el
+#+!3::{ ;; emacs in mingw64
+  scoop "mingw64", LayoutFullHd, "ahk_class mintty", "msys2"
+  Sleep 25
+  SendAndEnter "emacs &"
+  Sleep 100
+  SendAndEnter "exit"
+}
 #7::brave
 #8::opera
-#9::scoop "firefox https://www.ulusofona.pt", FirefoxLayout
+#9::scoop "firefox https://www.ulusofona.pt http://email.ulusofona.pt/", FirefoxLayout
 #+9::firefoxPrivateWindow ; this only works if a previous firefox window exists
 #+g::scoop "gitextensions" ; lets keep Win+G for the Windows Game Bar (to record small videos)
-#j::scoop "IDE\bin\idea64", "", "ahk_exe idea64.exe", "idea"
+#j::scoop "IDE\bin\idea64.exe", , "ahk_exe idea64.exe", "idea"
 
 #b::app "msedge"
 #m::youtube "game of thrones soundtrack" ; synthwave 80
@@ -81,6 +88,7 @@ CapsLock::LWin
 #+Enter::MyApp "C:\WINDOWS\system32\cmd.exe", "C:\WINDOWS\system32\cmd.exe /K cd /D C:\home", LayoutFullHd
 #!Enter::MyApp "Windows PowerShell", "wt -d C:\home", LayoutFullHd
 #Enter::scoop "git-bash --cd=C:\home", LayoutFullHd, "ahk_class mintty", "git"
+#+!Enter::scoop "mingw64", LayoutFullHd, "ahk_class mintty", "msys2"
 
 #d::FocusMode
 #h::Showtime
@@ -97,7 +105,6 @@ CapsLock::LWin
 
 ; THINGS TO CLEAN
 ;
-; #+!Enter::scoop("mingw64", LayoutFullHd, "ahk_class mintty", "msys2")
 ; #0::scoop("chrome", , , "googlechrome")
 ; chrome(Args := "") {
 ;   Dir = google%A_ThisFunc%-portable
