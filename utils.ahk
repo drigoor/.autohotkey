@@ -95,7 +95,7 @@ firefoxPrivateWindow(Args := "", LayoutFunc := FirefoxLayout) {
   Send "{Ctrl Down}l{Ctrl Up}"
   Sleep 10
   SendAndEnter Args
-  Sleep 50
+  Sleep 100
   if(LayoutFunc) {
     LayoutFunc.Call()
   }
