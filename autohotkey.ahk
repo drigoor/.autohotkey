@@ -58,7 +58,7 @@ CapsLock::LWin
 #!+l::LayoutEnlargeWidth
 
 #3::scoop "bin\runemacs", , "ahk_exe emacs.exe", "emacs"
-#+3::Run "runemacs -l c:\home\.emacs.d.alt\init.el" ; -q ;  -l C:\home\projects\emacs\nano-emacs\nano.el
+#+3::Run "runemacs" ; -q ;  -l C:\home\projects\emacs\nano-emacs\nano.el
 #+!3::{ ;; emacs in mingw64
   scoop "mingw64", LayoutFullHd, "ahk_class mintty", "msys2"
   Sleep 25
@@ -74,7 +74,7 @@ CapsLock::LWin
 #j::scoop "IDE\bin\idea64.exe", , "ahk_exe idea64.exe", "idea"
 
 #b::app "msedge"
-#m::youtube "game of thrones soundtrack" ; synthwave 80
+#y::youtube "game of thrones soundtrack" ; synthwave 80
 #n::app "notepad"
 #+n::Run "notepad"
 
@@ -96,6 +96,30 @@ CapsLock::LWin
 
 !f12::HideShowDesktopIcons
 
+; Volume
+Alt & WheelUp::SoundSetVolume "+1" ; Volume_Down
+Alt & WheelDown::SoundSetVolume "-1" ; Volume_Down
+Alt & MButton::SoundSetVolume "10"
+Control & MButton::SoundSetVolume "0"
+
+^PgUp::SoundSetVolume "+1"
+^PgDn::SoundSetVolume "-1"
+
+^+PgUp::SoundSetVolume "+10"
+^+PgDn::SoundSetVolume "-10"
+
+#NumpadAdd::SoundSetVolume "+1"
+#NumpadSub::SoundSetVolume "-1"
+
+; Transparency
+#!t::WinSetTransparent 200, "A"
+#!+t::WinSetTransparent "Off", "A"
+
+; Hide/Show Taskbar
+#t::WinHide "ahk_class Shell_TrayWnd"
+#+t::WinShow "ahk_class Shell_TrayWnd"
+
+
 
 
 ; THING TO EXPLORE
@@ -114,45 +138,8 @@ CapsLock::LWin
 ;   MyApp(WinTitle, Target)
 ; }
 ; #+d::app("C:\Program Files\Docker\Docker\Docker Desktop.exe", "", "ahk_exe Docker Desktop.exe")
-; #+n::
-; {
-;     if WinExist("Untitled - Notepad")
-;         WinActivate
-;     else
-;         Run "Notepad"
-; }
-
 ; #NumpadEnter::Run calc.exe
 
-; #NumpadSub::SoundSet, -1
-; #NumpadAdd::SoundSet, +1
-
-; ^PgDn::SoundSet, -1
-; ^PgUp::SoundSet, +1
-
-; ^+PgDn::SoundSet, -10
-; ^+PgUp::SoundSet, +10
-
-; ; Transparency
-; #!t::
-; WinGet, WinId, ID, A
-; WinSet, Transparent, 200, ahk_id %WinId%
-; return
-
-; #!+t::
-; WinGet, WinId, ID, A
-; WinSet, TransColor, Off, ahk_id %WinId%
-; return
-
-; ; Hide taskbar
-; ; from: https://www.autohotkey.com/boards/viewtopic.php?style=17&t=82538&p=360192
-; #t::WinHide ahk_class Shell_TrayWnd
-; #+t::WinShow ahk_class Shell_TrayWnd
-
-; ; Hide window titlebar (if window is maximizes, this turns it fullscreen)
-; ; from: http://superuser.com/questions/38687/windows-program-to-remove-titlebar-frame-etc-from-a-window
-; #f::WinSet, Style, -0xC40000, A ; using an auto-hide taskbar
-; #+f::WinSet, Style, +0xC40000, A ; using an auto-hide taskbar
 
 ; TwoThirdsLayoutRight() {
 ;   ActWin := WinActive("A")
