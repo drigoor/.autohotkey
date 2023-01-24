@@ -61,9 +61,9 @@ CapsLock::LWin
 #+3::Run "runemacs" ; -q ;  -l C:\home\projects\emacs\nano-emacs\nano.el
 #+!3::{ ;; emacs in mingw64
   scoop "mingw64", LayoutFullHd, "ahk_class mintty", "msys2"
-  Sleep 25
-  SendAndEnter "emacs &"
   Sleep 100
+  SendAndEnter "emacs &"
+  Sleep 250
   SendAndEnter "exit"
 }
 #7::brave
@@ -74,7 +74,7 @@ CapsLock::LWin
 #j::scoop "IDE\bin\idea64.exe", , "ahk_exe idea64.exe", "idea"
 
 #b::app "msedge"
-#y::youtube "game of thrones soundtrack" ; synthwave 80
+#m::youtube "game of thrones soundtrack" ; synthwave 80
 #n::app "notepad"
 #+n::Run "notepad"
 
