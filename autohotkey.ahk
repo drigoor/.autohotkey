@@ -39,7 +39,7 @@ CapsLock::LWin
 #1::Explorer "C:\home"
 #2::Explorer "C:\Users\User\Downloads"
 #4::Explorer "C:\home\aulas\2223"
-#5::Explorer "C:\home\aulas\2223\FP"
+#5::Explorer "C:\home\aulas\2223\AED"
 #6::Explorer "C:\home\aulas\2223\TFC"
 
 #e::ExplorerOpenOrCycle
@@ -63,12 +63,12 @@ CapsLock::LWin
   scoop "mingw64", LayoutFullHd, "ahk_class mintty", "msys2"
   Sleep 100
   SendAndEnter "emacs &"
-  Sleep 250
+  Sleep 500
   SendAndEnter "exit"
 }
 #7::brave
 #8::opera
-#9::scoop "firefox https://www.ulusofona.pt http://email.ulusofona.pt/", FirefoxLayout
+#9::scoop "firefox https://www.ulusofona.pt https://moodle.ensinolusofona.pt/ http://email.ulusofona.pt/", FirefoxLayout
 #+9::firefoxPrivateWindow ; this only works if a previous firefox window exists
 #+g::scoop "gitextensions" ; lets keep Win+G for the Windows Game Bar (to record small videos)
 #j::scoop "IDE\bin\idea64.exe", , "ahk_exe idea64.exe", "idea"
