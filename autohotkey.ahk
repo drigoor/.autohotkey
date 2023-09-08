@@ -53,9 +53,11 @@ CapsLock::LWin
 #f6::LayoutHd
 #!j::LayoutMoveLeft
 #!l::LayoutMoveRight
-#!i::LayoutExpandHeight
-#!+j::LayoutShrinkWidth
-#!+l::LayoutEnlargeWidth
+#!i::LayoutMoveUp
+#!k::LayoutMoveDown
+#^i::LayoutExpandHeight
+#+j::LayoutShrinkWidth
+#+l::LayoutEnlargeWidth
 
 #3::scoop "bin\runemacs", , "ahk_exe emacs.exe", "emacs"
 #+3::Run "runemacs" ; -q ;  -l C:\home\projects\emacs\nano-emacs\nano.el
