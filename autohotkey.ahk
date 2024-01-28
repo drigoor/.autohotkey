@@ -101,7 +101,7 @@ space::{
 #+o::Run "obsidian://open?vault=apontamentos_aulas"
 #^p::app "mspaint"
 #!p::scoop "sumatrapdf"
-#v::scoop "code"
+#v::scoop "code", , , "vscode"
 #+v::scoop "vscodium"
 
 #+Enter::MyApp "C:\WINDOWS\system32\cmd.exe", "C:\WINDOWS\system32\cmd.exe /K cd /D C:\home", LayoutFullHd
