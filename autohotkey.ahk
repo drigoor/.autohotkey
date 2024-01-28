@@ -105,7 +105,7 @@ space::{
 #+v::scoop "vscodium"
 
 #+Enter::MyApp "C:\WINDOWS\system32\cmd.exe", "C:\WINDOWS\system32\cmd.exe /K cd /D C:\home", LayoutFullHd
-#!Enter::MyApp "Windows PowerShell", "wt -d C:\home", LayoutFullHd
+#!Enter::MyApp "Windows PowerShell", "wt -w _quake -d C:\home" ;; after open, shortcut Win + \ will focus on powershell
 #Enter::scoop "git-bash --cd=C:\home", LayoutFullHd, "ahk_class mintty", "git"
 #+!Enter::scoop "mingw64", LayoutFullHd, "ahk_class mintty", "msys2"
 

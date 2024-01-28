@@ -72,7 +72,7 @@ If it is running and is the active window, minimize it (and the previous window 
 |-|-
 | W+Enter | open a git bash shell
 | W+S+Enter | open a cmd window
-| W-M-Enter | open a powershell window
+| W-M-Enter | open a powershell window in quake mode (after open, shortcut Win + \ will also focus on powershell
 | W-n | open or activate / minimize _notepad_
 | W-3 | open emacs
 | W-S-3 | open emacs without initialisations
