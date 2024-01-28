@@ -39,7 +39,12 @@ CapsLock & l::Right
 
 
 #HotIf WinACtive("ahk_exe brave.exe")
-space::Send "k"
+space::{
+  if InStr(WinGetTitle("A"), "youtube")
+    Send "k"
+  else
+    Send " "
+}
 
 
 #HotIf

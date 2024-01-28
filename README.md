@@ -42,7 +42,7 @@ If it is running and is the active window, minimize it (and the previous window 
 
 ### ...when in brave
 |-|-
-| space | same as pressing k (good for youtube - some tweak is necessary to keep scrolling otherwise)
+| space | same as pressing k if application is brave.exe and windows title contains 'youtube'
 
 ### ...all remaining cases
 |Shortcut|Description
