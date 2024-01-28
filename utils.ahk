@@ -23,7 +23,7 @@ ExplorerOpenOrCycle() { ; based on: https://github.com/TaranVH/2nd-keyboard (swi
   if WinActive("ahk_exe explorer.exe") {
     GroupActivate "explorer_group", "r"
   } else {
-    WinActivate WinTitle ;you have to use WinActivatebottom if you didn't create a window group.
+    WinActivate WinTitle ; you have to use WinActivatebottom if you didn't create a window group.
   }
 }
 
@@ -37,6 +37,7 @@ MyApp(WinTitle, Target, LayoutFunc := "") {
   WinWait WinTitle
   WinActivate WinTitle
   if DoLayout and LayoutFunc {
+    Sleep 150
     LayoutFunc.Call()
   }
 }
@@ -81,19 +82,19 @@ opera() {
 
 
 youtube(Thing) {
-  opera()
-  Sleep 50
+  brave()
+  Sleep 150
   Send "{Ctrl Down}l{Ctrl Up}"
-  Sleep 50
+  Sleep 150
   Send "https://www.youtube.com/results?search_query=" Thing "{Enter}"
 }
 
 
-firefoxPrivateWindow(Args := "", LayoutFunc := FirefoxLayout) {
+firefoxPrivate(Args := "", LayoutFunc := FirefoxLayout) {
   Send "^+p"
-  Sleep 10
+  Sleep 30
   Send "{Ctrl Down}l{Ctrl Up}"
-  Sleep 10
+  Sleep 30
   SendAndEnter Args
   Sleep 100
   if(LayoutFunc) {

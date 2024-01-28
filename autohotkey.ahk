@@ -9,11 +9,16 @@
 
 
 SetCapsLockState "AlwaysOff"
-SetNumLockState "AlwaysOn"
+; SetNumLockState "AlwaysOn"
 SetScrollLockState "AlwaysOff"
 
 
-CapsLock::LWin
+; CapsLock::LWin
+
+CapsLock & i::Up
+CapsLock & k::Down
+CapsLock & j::Left
+CapsLock & l::Right
 
 
 #Include %A_ScriptDir%\utils.ahk
@@ -33,14 +38,20 @@ CapsLock::LWin
 #i::Run scoop0("autohotkey", "WindowSpy.ahk")
 
 
+#HotIf WinACtive("ahk_exe brave.exe")
+space::Send "k"
+
+
 #HotIf
 ^!r::Reload ; Ctrl+Alt+R
 
+
 #1::Explorer "C:\home"
+#+1::Explorer "\\wsl.localhost\Ubuntu\home\user"
 #2::Explorer "C:\Users\User\Downloads"
-#4::Explorer "C:\home\aulas\2223"
-#5::Explorer "C:\home\aulas\2223\AED"
-#6::Explorer "C:\home\aulas\2223\TFC"
+#4::Explorer "C:\home\aulas\FP\2324"
+#5::Explorer "C:\home\aulas\AED\2324"
+#6::Explorer "C:\home\aulas\TFC\2324"
 
 #e::ExplorerOpenOrCycle
 #+e::Run "explorer"
@@ -70,8 +81,8 @@ CapsLock::LWin
 }
 #7::brave
 #8::opera
-#9::scoop "firefox https://www.ulusofona.pt https://moodle.ensinolusofona.pt/ http://email.ulusofona.pt/", FirefoxLayout
-#+9::firefoxPrivateWindow ; this only works if a previous firefox window exists
+#9::scoop "firefox https://www.ulusofona.pt https://moodle.ensinolusofona.pt/course/view.php?id=17627 http://email.ulusofona.pt/" ;; , FirefoxLayout ;; 23/24 FP https://www.ulusofona.pt https://moodle.ensinolusofona.pt/course/view.php?id=23380
+#+9::firefoxPrivate ; this only works if a previous firefox window exists
 #+g::scoop "gitextensions" ; lets keep Win+G for the Windows Game Bar (to record small videos)
 #j::scoop "IDE\bin\idea64.exe", , "ahk_exe idea64.exe", "idea"
 
@@ -85,7 +96,8 @@ CapsLock::LWin
 #+o::Run "obsidian://open?vault=apontamentos_aulas"
 #^p::app "mspaint"
 #!p::scoop "sumatrapdf"
-#v::scoop "vscodium"
+#v::scoop "code"
+#+v::scoop "vscodium"
 
 #+Enter::MyApp "C:\WINDOWS\system32\cmd.exe", "C:\WINDOWS\system32\cmd.exe /K cd /D C:\home", LayoutFullHd
 #!Enter::MyApp "Windows PowerShell", "wt -d C:\home", LayoutFullHd
@@ -154,3 +166,7 @@ Control & MButton::SoundSetVolume "0"
 ; }
 
 ; #Include %A_ScriptDir%\AltWindowDrag.ahk
+
+
+;; avoid language bar stuff
+#Space::MsgBox 'windows + space'

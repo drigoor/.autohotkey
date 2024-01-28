@@ -40,6 +40,10 @@ If it is running and is the active window, minimize it (and the previous window 
 |-|-
 | W-i | opens autohotkey _Windows Spy_
 
+### ...when in brave
+|-|-
+| space | same as pressing k (good for youtube - some tweak is necessary to keep scrolling otherwise)
+
 ### ...all remaining cases
 |Shortcut|Description
 |-|-
