@@ -44,7 +44,7 @@ MyApp(WinTitle, Target, LayoutFunc := "") {
 
 
 scoop0(dir, program) {
-  return "C:\home\scoop\apps\" dir "\current\" program
+  return "C:\bin\scoop\apps\" dir "\current\" program
 }
 
 

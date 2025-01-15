@@ -9,11 +9,11 @@
 
 
 SetCapsLockState "AlwaysOff"
-; SetNumLockState "AlwaysOn"
+SetNumLockState "AlwaysOn"
 SetScrollLockState "AlwaysOff"
 
 
-; CapsLock::LWin
+CapsLock::LWin
 
 CapsLock & i::Up
 CapsLock & k::Down
@@ -21,10 +21,19 @@ CapsLock & j::Left
 CapsLock & l::Right
 
 
+SetWorkingDir "D:\" ; work around for powershell to start in the right dir
+
+
 #Include %A_ScriptDir%\utils.ahk
 
 
-#HotIf WinActive("ahk_exe WindowsTerminal.exe")
+#HotIf WinActive("ahk_exe cmd.exe")
+#e::SendAndEnter "explorer ."
+^l::SendAndEnter "cls"
+^d::SendAndEnter "exit"
+
+
+#HotIf WinActive("ahk_exe powershell.exe")
 #e::SendAndEnter "explorer ."
 ^l::SendAndEnter "cls"
 ^d::SendAndEnter "exit"
@@ -38,12 +47,11 @@ CapsLock & l::Right
 #i::Run scoop0("autohotkey", "WindowSpy.ahk")
 
 
-#HotIf WinACtive("ahk_exe brave.exe")
-space::{
-  if InStr(WinGetTitle("A"), "youtube")
-    Send "k"
-  else
-    Send " "
+#HotIf WinActive("ahk_exe firefox.exe")
+#p::{
+  Send "^t"
+  Sleep 200
+  Send "about:profiles{Enter}"
 }
 
 
@@ -51,12 +59,12 @@ space::{
 ^!r::Reload ; Ctrl+Alt+R
 
 
-#1::Explorer "C:\home"
+#1::Explorer "d:\"
 #+1::Explorer "\\wsl.localhost\Ubuntu\home\user"
 #2::Explorer "C:\Users\User\Downloads"
-#4::Explorer "C:\home\aulas\FP\2324"
-#5::Explorer "C:\home\aulas\AED\2324"
-#6::Explorer "C:\home\aulas\TFC\2324"
+#4::Explorer "d:\aulas\FP\2425"
+#5::Explorer "d:\aulas\AED\2425"
+#6::Explorer "d:\aulas\TFC\2425"
 
 #e::ExplorerOpenOrCycle
 #+e::Run "explorer"
@@ -68,10 +76,13 @@ space::{
 #f5::LayoutFullHd
 #f6::LayoutHd
 #!j::LayoutMoveLeft
+#!left::LayoutMoveLeft
 #!l::LayoutMoveRight
+#!right::LayoutMoveRight
 #!i::LayoutMoveUp
 #!k::LayoutMoveDown
 #^i::LayoutExpandHeight
+#^up::LayoutExpandHeight
 #+j::LayoutShrinkWidth
 #+l::LayoutEnlargeWidth
 
@@ -86,50 +97,42 @@ space::{
 }
 #7::brave
 #8::opera
-#9::scoop "firefox https://www.ulusofona.pt https://moodle.ensinolusofona.pt/course/view.php?id=17627 http://email.ulusofona.pt/" ;; , FirefoxLayout ;; 23/24 FP https://www.ulusofona.pt https://moodle.ensinolusofona.pt/course/view.php?id=23380
+#9::scoop "firefox https://www.ulusofona.pt https://mail.google.com"
 #+9::firefoxPrivate ; this only works if a previous firefox window exists
 #+g::scoop "gitextensions" ; lets keep Win+G for the Windows Game Bar (to record small videos)
 #j::scoop "IDE\bin\idea64.exe", , "ahk_exe idea64.exe", "idea"
+#u::scoop "IDE\bin\idea64.exe", , "ahk_exe idea64.exe", "idea-ultimate"
+#k::scoop "IDE\bin\goland64.exe", , "ahk_exe goland64.exe", "goland"
 
-#b::app "msedge"
-#m::youtube "game of thrones soundtrack" ; synthwave 80
+#m::youtube "oblivion soundtrack" ; "game of thrones soundtrack" ; synthwave 80
 #n::app "notepad"
 #+n::Run "notepad"
 
 #o::scoop "obsidian"
 #!o::Run "obsidian://open?vault=apontamentos"
 #+o::Run "obsidian://open?vault=apontamentos_aulas"
-#^p::app "mspaint"
+#^p::scoop "paintdotnet.exe", , "ahk_exe paintdotnet.exe", "paint.net"
 #!p::scoop "sumatrapdf"
-#v::scoop "code", , , "vscode"
 #+v::scoop "vscodium"
 
-#+Enter::MyApp "C:\WINDOWS\system32\cmd.exe", "C:\WINDOWS\system32\cmd.exe /K cd /D C:\home", LayoutFullHd
-#!Enter::MyApp "Windows PowerShell", "wt -w _quake -d C:\home" ;; after open, shortcut Win + \ will focus on windows terminal
-#^Enter::MyApp "Windows PowerShell", "wt -w _quake -p Ubuntu" ;; after open, shortcut Win + \ will focus on windows terminal
-#Enter::scoop "git-bash --cd=C:\home", LayoutFullHd, "ahk_class mintty", "git"
-#+!Enter::scoop "mingw64", LayoutFullHd, "ahk_class mintty", "msys2"
+#+Enter::MyApp "cmd.exe", "cmd.exe /K cd /D D:\", LayoutFullHd
+#!Enter::MyApp "ahk_exe powershell.exe", "powershell.exe", LayoutFullHd
+#Enter::scoop "git-bash --cd=D:\", LayoutFullHd, "ahk_class mintty", "git"
+#+!Enter::MyApp "ahk_exe mintty.exe", "C:\bin\msys64\mingw64.exe", LayoutFullHd
 
 #d::FocusMode
 #h::Showtime
 #i::ShowWindowInfo
 
-!f12::HideShowDesktopIcons
+^f12::HideShowDesktopIcons
 
 ; Volume
-Alt & WheelUp::SoundSetVolume "+1" ; Volume_Down
-Alt & WheelDown::SoundSetVolume "-1" ; Volume_Down
-Alt & MButton::SoundSetVolume "10"
-Control & MButton::SoundSetVolume "0"
-
 ^PgUp::SoundSetVolume "+1"
 ^PgDn::SoundSetVolume "-1"
-
-^+PgUp::SoundSetVolume "+10"
-^+PgDn::SoundSetVolume "-10"
-
-#NumpadAdd::SoundSetVolume "+1"
-#NumpadSub::SoundSetVolume "-1"
+Alt & WheelUp::SoundSetVolume "+1"
+Alt & WheelDown::SoundSetVolume "-1"
+Alt & MButton::SoundSetVolume "10"
+Control & MButton::SoundSetVolume "0"
 
 ; Transparency
 #!t::WinSetTransparent 200, "A"
@@ -139,40 +142,28 @@ Control & MButton::SoundSetVolume "0"
 #t::WinHide "ahk_class Shell_TrayWnd"
 #+t::WinShow "ahk_class Shell_TrayWnd"
 
-
-
-
-; THING TO EXPLORE
-;
-; ::btw::by the way
-
-
-; THINGS TO CLEAN
-;
-; #0::scoop("chrome", , , "googlechrome")
-; chrome(Args := "") {
-;   Dir = google%A_ThisFunc%-portable
-;   Exe = %A_ThisFunc%.exe
-;   WinTitle = ahk_exe %Exe%
-;   Target := scoop0(Dir, Exe) " --user-data-dir=""" scoop0(Dir, "User Data") """ " Args
-;   MyApp(WinTitle, Target)
-; }
-; #+d::app("C:\Program Files\Docker\Docker\Docker Desktop.exe", "", "ahk_exe Docker Desktop.exe")
-; #NumpadEnter::Run calc.exe
-
-
-; TwoThirdsLayoutRight() {
-;   ActWin := WinActive("A")
-;   WinMove, A, , A_ScreenWidth / 3, , A_ScreenWidth - (A_ScreenWidth / 3),
-;   Send, !{Esc}
-;   Sleep, 150
-;   WinMove, A, , 0, , A_ScreenWidth / 3,
-;   ; from: https://jacks-autohotkey-blog.com/2020/04/20/autohotkey-tricks-for-tracking-activating-target-process-windows/#more-41349
-;   WinActivate, ahk_id %ActWin%
-; }
-
-; #Include %A_ScriptDir%\AltWindowDrag.ahk
-
-
 ;; avoid language bar stuff
 #Space::MsgBox 'windows + space'
+
+
+;;; things to explore
+
+; show battery status like the time or window information
+
+
+;;; abandonware
+
+; #b::app "msedge"
+; #^p::app "mspaint"
+; #v::scoop "code", , , "vscode"
+; #Include %A_ScriptDir%\AltWindowDrag.ahk
+; MsgBox  A_ScreenWidth " x " A_ScreenHeight " - dpi: " A_ScreenDPI
+; #!Enter::MyApp "Windows PowerShell", "wt -w _quake -d D:\" ;; after open, shortcut Win + \ will focus on windows terminal
+; #^Enter::MyApp "Windows PowerShell", "wt -w _quake -p Ubuntu" ;; after open, shortcut Win + \ will focus on windows terminal
+; #HotIf WinACtive("ahk_exe brave.exe")
+; space::{
+;   if InStr(WinGetTitle("A"), "youtube")
+;     Send "k"
+;   else
+;     Send " "
+; }
