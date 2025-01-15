@@ -75,7 +75,7 @@ brave() {
 
 
 opera() {
-  scoop("launcher --private --user-data-dir=" scoop0("opera", "profile"), OperaLayout, "ahk_exe opera.exe", "opera")
+  scoop("opera --private --user-data-dir=" scoop0("opera", "profile"), OperaLayout, "ahk_exe opera.exe", "opera")
 
   ; mklink /J c:\home\scoop\apps\opera\current\profile c:\home\scoop\persist\opera\profile
 }
